@@ -1,0 +1,26 @@
+PasswordMaker Desktop Edition Roadmap
+	Version 0.2
+		- Check to see if QT 4.3 uses qsqlite.dll or qsqlite4.dll (I think it's the latter, but haven't tested yet)
+			- Done
+		- Replace QSA with QtScript (Part of QT 4.3)
+			- Done
+		- Test running off a USB drive purely without adding stuff to the host system
+			- Done and ready for testing. PortableApp.com support (installing) will need to be done before 1.0
+			
+	Version 0.4
+		- Master password hash support (Internally allow for multiple account support if possible at this point)
+		
+	Version 0.x (Not planned for a specific version yet, but is needed for 1.0)
+		- Make a Readme.txt file (looking for a 0.3 relase)
+		- Rework settings to support multiple accounts
+			- Transparently support multiple accounts, with more than one for a URL using what would be the first on the list
+		- Rework interface to suport accounts.
+		- Ensure all features in the Firefox Extension (that make sense outside of a browser anyway) are supported.
+
+Random stuff to check (no need to be complete for 1.0, or even 2.0... ;) )
+- Figure out why HMAC on QSA is so damn slow! (mHash is MUCH faster, but HMAC-SHA256 bug is not an option)
+	=(0.1) Somewhat fixed in that a delay was added before the password is generated. When user configurible options exists, allow this delay to be changed.
+	=(0.2) QtScript is MUCH faster than QSA. However, it's still a tad slow, so a delay is still needed.
+- Look to see if QCA2 is a good replacment for mHash and if it's easy to install in general (may be some gothas I haven't noticed because I didn't install it yet)
+	=(Sept 26, 2007) Out of the box (and with the plugins I saw), doesn't support all the hash functions we need. Bummer.
+- See what other classes could be made QT independent

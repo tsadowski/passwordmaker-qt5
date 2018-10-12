@@ -1,0 +1,13 @@
+<!DOCTYPE RCC>
+<RCC version='1.0'>
+	<qresource>
+		<file>getHash.qs</file>
+		<file>images/ring-16x16.png</file>
+		<file>images/ring-24x24.png</file>
+		<file>images/ring-32x32.png</file>
+		<file>images/ring-48x48.png</file>
+		<file>images/ring-64x64.png</file>
+		<file>images/ring-128x128.png</file>
+		<file>images/ring-256x256.png</file>
+	</qresource>
+</RCC>

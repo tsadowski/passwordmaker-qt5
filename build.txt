@@ -1,0 +1,62 @@
+To build this edition of PasswordMaker, you'll need Trolltech's QT and QSA or
+mHash.
+
+----------------
+- For Windows: -
+----------------
+Note: Unless you have a licence for QT, you MUST download the open source
+version, and use MinGW to compile.
+
+Step 1: Install Trolltech QT (4.3 or higher)
+Just download the latest version of QT, and install. If you don't have MinGW,
+use the installer with MinGW in the name, and have it install MinGW for you.
+
+Note: If you don't get asked to register enviroment varibles for QT, you need to
+add QT's bin directory to your path and set QTDIR to where you installed QT
+(normally c:\QT\<version>) if you're not going to use the shortcut in QT's
+program menu to get a proper command prompt.
+
+Step 2: Run qmake
+In a proper build enviroment, just run: qmake
+
+If you're using mhash, the command (for some extra bit of speed, but lacking
+HMAC-SHA-256 Version 1.5.2) would look like this:
+qmake USE_MHASH=1
+or if you're using the provided mHash libraries
+qmake USE_MHASH=1 MHASH_DIR=shared/3rdparty/mhash/mingw
+
+You may add USE_CONSOLE=1 if you want console output for debugging reasons.
+
+This version also supports using a subdirectory called data to store it's
+settings. Just add PORTABLE=1 to the qmake line you're using to activate this
+feature. The resulting filename will be PasswordMakerPortable.exe
+
+Step 3: Run make
+
+If you plan on running your own built version on other computers, either compile
+QT statically, or include the dll files in the directory you compiled it in.
+(Make sure to copy the sqldrivers directory with the sqlite dll as well)
+
+---------------------------------
+- For Linux (and maybe Mac OSX) -
+---------------------------------
+Note: If your distro of Linux has a package system, you may use that to install
+the libraries used.
+
+Step 1: Install Trolltech QT (4.3 or higher)
+If you can't use your package system (or don't have one) to install QT, the
+instructions on that come with QT should be enough. Some distros may require
+installing development tools to compile stuff. You need to make sure the SQL
+(with a SQLite driver) and XML modules are installed. If you're not using mHash,
+the QtScript module needs to be installed.
+
+Step 2 (Optional): Install mHash
+Use this method if you want the passwords to be generated faster. Doing so will
+not allow you to use HMAC-SHA256 Version 1.5.2 however.
+
+Step 3: Run qmake
+If you're using QtScript, just run: qmake
+If you're using mHash, run: qmake USE_MHASH=1
+If the include and lib directories for mHash is not in the normal search path,
+add MHASH_DIR=<path> replacing path with where to find mHash include and lib
+files.

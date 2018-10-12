@@ -1,0 +1,4 @@
+Needed:
+	256x256 128x128 32x32 16x16
+All sizes wanted:
+	256x256 128x128 48x48 32x32 24x24 16x16
