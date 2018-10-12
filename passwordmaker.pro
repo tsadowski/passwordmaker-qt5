@@ -47,9 +47,8 @@ HEADERS += shared/pwm_common.h \
 RESOURCES = resources.qrc
 win32:RC_FILE = passwordmaker.rc
 
-PRECOMPILED_HEADER = stdafx.h
 CONFIG += warn_on qt
-QT += xml sql
+QT += xml sql widgets
 
 # To make the command line window on Windows
 CONFIG(debug, debug|release):CONFIG += console
@@ -61,27 +60,18 @@ CONFIG(release, debug|release):OBJECTS_DIR = release
 CONFIG(release, debug|release):CONFIG -= debug_and_release_target
 DESTDIR = .
 
-!isEmpty(USE_MHASH) {
-	!isEmpty(MHASH_DIR) {
-		LIBS += -L$$MHASH_DIR/lib
-		INCLUDEPATH += $$MHASH_DIR/include
-	}
+#!isEmpty(USE_MHASH) {
+#	!isEmpty(MHASH_DIR) {
+#		LIBS += -L$$MHASH_DIR/lib
+#		INCLUDEPATH += $$MHASH_DIR/include
+#	}
 	LIBS += -lmhash
 	DEFINES += USE_MHASH
-} else {
-	QT += script
-	DEFINES += USE_QTSCRIPT USE_SHA256_BUG
-}
+#} else {
+#	QT += script
+#	DEFINES += USE_QTSCRIPT USE_SHA256_BUG
+#}
 
-!isEmpty(PORTABLE) {
-	TARGET = PasswordMakerPortable
-	isEmpty(USE_DATA_DIR) {
-		USE_DATA_DIR=data
-	}
-	CONFIG(debug, debug|release):OBJECTS_DIR = debugPortable
-	CONFIG(release, debug|release):OBJECTS_DIR = releasePortable
-	DEFINES +=
-}
 MOC_DIR = $$OBJECTS_DIR
 RCC_DIR = $$OBJECTS_DIR
 UI_DIR = $$OBJECTS_DIR

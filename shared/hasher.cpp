@@ -91,7 +91,7 @@ Hasher::Hasher(
 #endif
 )
 #ifdef USE_QT
-: QObject(parent), script(this)
+: QObject(parent)//, script(this)
 #endif
 {
 #ifdef USE_QTSCRIPT
@@ -265,12 +265,14 @@ QString Hasher::hash(hashType algo, bool usingHMAC, bool trim, QString encoding,
 		return "ERROR!";
 	}
 	if (usingHMAC) {
-		td = mhash_hmac_init(algorithm, (void*)key.toAscii().data(), key.size(), mhash_get_hash_pblock(algorithm));
-		mhash(td, data.toAscii().data(), data.size());
+		td = mhash_hmac_init(algorithm, 
+(void*)key.toLatin1().data(), key.size(), 
+mhash_get_hash_pblock(algorithm));
+		mhash(td, data.toLatin1().data(), data.size());
 		mhash_hmac_deinit(td, mutils_word8_cast hash);
 	} else {
 		td = mhash_init(algorithm);
-		mhash(td, (void*)data.toAscii().data(), data.size());
+		mhash(td, (void*)data.toLatin1().data(), data.size());
 		mhash_deinit(td, mutils_word8_cast hash);
 	}
 	ret = rstr2any(hash, mhash_get_block_size(algorithm), encoding, trim);

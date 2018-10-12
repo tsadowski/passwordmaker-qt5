@@ -54,7 +54,7 @@ void OptionsWindow::accept() {
 	QDialog::accept();
 }
 
-void OptionsWindow::exec() {
+int OptionsWindow::exec() {
 	QVariant setting;
 	PWMSettings settings(this);
 	// Load settings, here only because an import can change things
@@ -78,7 +78,7 @@ void OptionsWindow::exec() {
 	if (setting.isValid() && setting.convert(QVariant::Int)) {
 		findChild<QSpinBox *>("autoClearTime")->setValue(setting.toInt());
 	}
-	QDialog::exec();
+	return QDialog::exec();
 }
 
 void OptionsWindow::createInterface() {

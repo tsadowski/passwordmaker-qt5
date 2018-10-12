@@ -32,7 +32,7 @@ public:
 	OptionsWindow(QWidget *parent = 0);
 public slots:
 	virtual void accept();
-	void exec();
+	int exec();
 	
 private slots:
 private: // Functions
