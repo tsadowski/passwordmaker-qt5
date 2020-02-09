@@ -60,6 +60,51 @@ CONFIG(release, debug|release):OBJECTS_DIR = release
 CONFIG(release, debug|release):CONFIG -= debug_and_release_target
 DESTDIR = .
 
+isEmpty(PREFIX) {
+ PREFIX=/usr/local
+}
+
+target.path = $$PREFIX/bin/passwordmaker
+INSTALLS += target
+icon16.path = $$PREFIX/share/icons/hicolor/16x16/apps/
+icon16.extra = mkdir -p $$shadowed($$PWD)/16x16 && \
+               cp $$PWD/images/ring-16x16.png $$shadowed($$PWD)/16x16/ring.png
+icon16.files = $$shadowed($$PWD)/16x16/ring.png
+INSTALLS += icon16
+icon24.path = $$PREFIX/share/icons/hicolor/24x24/apps/
+icon24.extra = mkdir -p $$shadowed($$PWD)/24x24 && \
+               cp $$PWD/images/ring-24x24.png $$shadowed($$PWD)/24x24/ring.png
+icon24.files = $$shadowed($$PWD)/24x24/ring.png
+INSTALLS += icon24
+icon32.path = $$PREFIX/share/icons/hicolor/32x32/apps/
+icon32.extra = mkdir -p $$shadowed($$PWD)/32x32 && \
+               cp $$PWD/images/ring-32x32.png $$shadowed($$PWD)/32x32/ring.png
+icon32.files = $$shadowed($$PWD)/32x32/ring.png
+INSTALLS += icon32
+icon48.path = $$PREFIX/share/icons/hicolor/48x48/apps/
+icon48.extra = mkdir -p $$shadowed($$PWD)/48x48 && \
+               cp $$PWD/images/ring-48x48.png $$shadowed($$PWD)/48x48/ring.png
+icon48.files = $$shadowed($$PWD)/48x48/ring.png
+INSTALLS += icon48
+icon64.path = $$PREFIX/share/icons/hicolor/64x64/apps/
+icon64.extra = mkdir -p $$shadowed($$PWD)/64x64 && \
+               cp $$PWD/images/ring-64x64.png $$shadowed($$PWD)/64x64/ring.png
+icon64.files = $$shadowed($$PWD)/64x64/ring.png
+INSTALLS += icon64
+icon128.path = $$PREFIX/share/icons/hicolor/128x128/apps/
+icon128.extra = mkdir -p $$shadowed($$PWD)/128x128 && \
+                cp $$PWD/images/ring-128x128.png $$shadowed($$PWD)/128x128/ring.png
+icon128.files = $$shadowed($$PWD)/128x128/ring.png
+INSTALLS += icon128
+icon256.path = $$PREFIX/share/icons/hicolor/256x256/apps/
+icon256.extra = mkdir -p $$shadowed($$PWD)/256x256 && \
+                cp $$PWD/images/ring-256x256.png $$shadowed($$PWD)/256x256/ring.png
+icon256.files = $$shadowed($$PWD)/256x256/ring.png
+INSTALLS += icon256
+desktop.path = $$PREFIX/share/applications/
+desktop.files = $$PWD/passwordmaker.desktop
+INSTALLS += desktop
+
 #!isEmpty(USE_MHASH) {
 #	!isEmpty(MHASH_DIR) {
 #		LIBS += -L$$MHASH_DIR/lib
