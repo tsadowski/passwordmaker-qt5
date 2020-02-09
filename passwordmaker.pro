@@ -64,7 +64,8 @@ isEmpty(PREFIX) {
  PREFIX=/usr/local
 }
 
-target.path = $$PREFIX/bin/passwordmaker
+target.path = $$PREFIX/bin/
+target.files = $$shadowed($$PWD)/passwordmaker
 INSTALLS += target
 icon16.path = $$PREFIX/share/icons/hicolor/16x16/apps/
 icon16.extra = mkdir -p $$shadowed($$PWD)/16x16 && \
